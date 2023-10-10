@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.koncini.microservices.models.dto.ProductRequest;
-import com.koncini.microservices.models.repositories.ProductRepository;
+import com.koncini.microservices.models.repositories.IProductRepository;
 import com.mongodb.assertions.Assertions;
 
 @SpringBootTest
@@ -34,7 +34,7 @@ class SpringMicroservicesDemoApplicationTests {
 	@Autowired
 	private ObjectMapper objectMapper;
 	@Autowired
-	private ProductRepository productRepository;
+	private IProductRepository productRepository;
 
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {

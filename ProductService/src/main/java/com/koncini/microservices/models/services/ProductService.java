@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.koncini.microservices.models.Product;
 import com.koncini.microservices.models.dto.ProductRequest;
 import com.koncini.microservices.models.dto.ProductResponse;
-import com.koncini.microservices.models.repositories.ProductRepository;
+import com.koncini.microservices.models.repositories.IProductRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ProductService {
 
-	private final ProductRepository productRepository;
+	private final IProductRepository productRepository;
 
 	public void createProduct(ProductRequest productRequest) {
 		Product product = Product.builder().name(productRequest.getName()).description(productRequest.getDescription())
