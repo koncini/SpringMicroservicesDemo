@@ -11,10 +11,12 @@ import com.koncini.microservices.models.dto.OrderLineItemsDto;
 import com.koncini.microservices.models.dto.OrderRequest;
 import com.koncini.microservices.models.repositories.IOrderRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderService {
 
 	private final IOrderRepository orderRepository;
@@ -22,7 +24,7 @@ public class OrderService {
 	public void placeOrder(OrderRequest orderRequest) {
 		Order order = new Order();
 		order.setOrderNumber(UUID.randomUUID().toString());
-		List<OrderLineItems> orderLineItems = orderRequest.getOderLineItemsDtoList().stream().map(this::mapToDto)
+		List<OrderLineItems> orderLineItems = orderRequest.getOrderLineItemsDtoList().stream().map(this::mapToDto)
 				.toList();
 		order.setOrderLineItemsList(orderLineItems);
 
