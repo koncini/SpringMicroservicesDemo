@@ -1,34 +1,14 @@
 package com.koncini.microservices;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import com.koncini.microservice.models.Inventory;
-import com.koncini.microservice.models.repositories.IInventoryRepository;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InventoryServiceApplication.class, args);
 	}
-
-	@Bean
-	CommandLineRunner loadData(IInventoryRepository inventoryRepository) {
-		return args -> {
-			Inventory inventory = new Inventory();
-			inventory.setSkuCode("iphone 13");
-			inventory.setQuantity(100);
-
-			Inventory inventory1 = new Inventory();
-			inventory1.setSkuCode("iphone 13 red");
-			inventory1.setQuantity(1);
-
-			inventoryRepository.save(inventory);
-			inventoryRepository.save(inventory1);
-		};
-	}
-
 }
